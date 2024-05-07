@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 
 namespace LoginFormConsole
 {
@@ -6,14 +7,24 @@ namespace LoginFormConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Seja bem-vindo ao Sanja Farm!");
-
             string username = "";
             string password = "";
 
             bool loggedIn = false;
             while (!loggedIn)
             {
+                Console.ForegroundColor = ConsoleColor.Green; // Definir a cor do texto como verde
+                Console.WriteLine(" ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄   ▄▄    ▄▄   ▄▄ ▄▄▄ ▄▄    ▄ ▄▄▄▄▄▄  ▄▄▄▄▄▄▄");
+                Console.WriteLine("█  ▄    █       █  █▄█  █  █  █ █  █   █  █  █ █      ██       █");
+                Console.WriteLine("█ █▄█   █    ▄▄▄█       █  █  █▄█  █   █   █▄█ █  ▄    █   ▄   █");
+                Console.WriteLine("█       █   █▄▄▄█       █  █       █   █       █ █ █   █  █ █  █");
+                Console.WriteLine("█  ▄   ██    ▄▄▄█       █  █       █   █  ▄    █ █▄█   █  █▄█  █");
+                Console.WriteLine("█ █▄█   █   █▄▄▄█ ██▄██ █   █     ██   █ █ █   █       █       █");
+                Console.WriteLine("█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄█   █▄█    █▄▄▄█ █▄▄▄█▄█  █▄▄█▄▄▄▄▄▄██▄▄▄▄▄▄▄█");
+                Console.ResetColor(); // Resetar a cor para o padrão
+
+                Console.WriteLine();
+
                 // Solicitar nome de usuário
                 Console.Write("Nome de usuário: ");
                 username = Console.ReadLine();
@@ -26,7 +37,9 @@ namespace LoginFormConsole
 
                 if (!loggedIn)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red; // Destaca a mensagem de erro em vermelho
                     Console.WriteLine("Nome de usuário ou senha incorretos. Por favor, tente novamente.");
+                    Console.ResetColor(); // Resetar a cor para o padrão
                     Console.WriteLine("Pressione qualquer tecla para continuar...");
                     Console.ReadKey(); // Espera até que o usuário pressione uma tecla para continuar
                     Console.Clear(); // Limpar a tela antes de solicitar as credenciais novamente
@@ -47,26 +60,28 @@ namespace LoginFormConsole
 
                 switch (option.ToLower())
                 {
-                    case "produtos":
+                    case "1":
                         DisplayProducts();
                         break;
-                    case "clientes":
+                    case "2":
                         DisplayClientes();
                         break;
-                    case "fornecedores":
+                    case "3":
                         DisplayFornecedores();
                         break;
-                    case "ajuda":
+                    case "4":
                         DisplayAjuda();
                         break;
-                    case "perfil":
+                    case "5":
                         DisplayPerfil();
                         break;
-                    case "sair":
+                    case "6":
                         Console.WriteLine("Saindo do programa...");
                         return; // Termina a execução do programa
                     default:
+                        Console.ForegroundColor = ConsoleColor.Yellow; // Destaca a mensagem de erro em amarelo
                         Console.WriteLine("Opção inválida. Por favor, escolha uma opção válida.");
+                        Console.ResetColor(); // Resetar a cor para o padrão
                         break;
                 }
             }
@@ -85,33 +100,26 @@ namespace LoginFormConsole
         {
             Console.Clear(); // Limpar a tela
 
-            // Exibir mensagem de boas-vindas
-            Console.WriteLine("Seja bem-vindo ao Sanja Farm!");
-            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Green; // Definir a cor do texto como verde
+            Console.WriteLine(" ▄▄   ▄▄ ▄▄▄▄▄▄▄ ▄▄    ▄ ▄▄   ▄▄");
+            Console.WriteLine("█  █▄█  █       █  █  █ █  █ █  █");
+            Console.WriteLine("█       █    ▄▄▄█   █▄█ █  █ █  █");
+            Console.WriteLine("█       █   █▄▄▄█       █  █▄█  █");
+            Console.WriteLine("█       █    ▄▄▄█  ▄    █       █");
+            Console.WriteLine("█ ██▄██ █   █▄▄▄█ █ █   █       █");
+            Console.WriteLine("█▄█   █▄█▄▄▄▄▄▄▄█▄█  █▄▄█▄▄▄▄▄▄▄█");
+            Console.ResetColor(); // Resetar a cor para o padrão
 
-            // Exibir desenho do Sanja Farm
-            Console.WriteLine(@"     _______
-    /       \
-   /  _   _  \
-  /  /_\_/ \  \
- /   \_/ \_/   \
-/_______________\
-|      ___      |
-|     /   \     |
-|    /     \    |
-|   /       \   |
-|  /_________\  |
-|_______________|");
             Console.WriteLine();
 
             // Exibir opções de menu
-            Console.WriteLine("Menu:");
-            Console.WriteLine("- Produtos");
-            Console.WriteLine("- Clientes");
-            Console.WriteLine("- Fornecedores");
-            Console.WriteLine("- Ajuda");
-            Console.WriteLine("- Perfil");
-            Console.WriteLine("- Sair");
+            Console.WriteLine("---------------------------------------------------------------");
+            Console.WriteLine("1. Produtos");
+            Console.WriteLine("2. Clientes");
+            Console.WriteLine("3. Fornecedores");
+            Console.WriteLine("4. Ajuda");
+            Console.WriteLine("5. Perfil");
+            Console.WriteLine("6. Sair");
         }
 
         // Método para exibir os produtos
@@ -132,13 +140,9 @@ namespace LoginFormConsole
             Console.WriteLine("- Vinho");
             Console.WriteLine();
 
-            // Exibir opções de menu para retornar ao menu principal ou sair
-            Console.WriteLine("Opções:");
-            Console.WriteLine("- Retornar ao Menu Principal");
-            Console.WriteLine("- Sair");
-
-            // Aguardar retorno ao menu principal
-            Console.ReadLine();
+            // Aguardar entrada do usuário para retornar ao menu principal
+            Console.WriteLine("Pressione qualquer tecla para retornar ao Menu Principal...");
+            Console.ReadKey();
             DisplayMenu();
         }
 
@@ -159,13 +163,9 @@ namespace LoginFormConsole
             Console.WriteLine("- Julia Uchoas Paschal | ID: 633334126-7 | CPF: 554.308.577-08");
             Console.WriteLine();
 
-            // Exibir opções de menu para retornar ao menu principal ou sair
-            Console.WriteLine("Opções:");
-            Console.WriteLine("- Retornar ao Menu Principal");
-            Console.WriteLine("- Sair");
-
-            // Aguardar retorno ao menu principal
-            Console.ReadLine();
+            // Aguardar entrada do usuário para retornar ao menu principal
+            Console.WriteLine("Pressione qualquer tecla para retornar ao Menu Principal...");
+            Console.ReadKey();
             DisplayMenu();
         }
 
@@ -176,11 +176,105 @@ namespace LoginFormConsole
 
             // Exibir mensagem de boas-vindas
             Console.WriteLine("Seja bem-vindo à página de Fornecedores do Sanja Farm!");
-            // Resto da implementação da página de fornecedores
+            Console.WriteLine();
 
-            // Aguardar retorno ao menu principal
-            Console.ReadLine();
-            DisplayMenu();
+            // Exibir informações dos fornecedores
+            if (Fornecedores.Count > 0)
+            {
+                Console.WriteLine("Fornecedores Cadastrados:");
+                foreach (var fornecedor in Fornecedores)
+                {
+                    Console.WriteLine($"- Nome: {fornecedor.Nome}");
+                    Console.WriteLine($"  CPF/CNPJ: {fornecedor.CpfCnpj}");
+                    Console.WriteLine($"  Endereço: {fornecedor.Endereco}");
+                    Console.WriteLine($"  E-mail: {fornecedor.Email}");
+                    Console.WriteLine($"  Telefone: {fornecedor.Telefone}");
+                    Console.WriteLine("  Dados de Monitoramento:");
+                    Console.WriteLine($"  - Data de Entrega: {fornecedor.DataEntrega}");
+                    Console.WriteLine($"  - Qualidade dos Produtos: {fornecedor.QualidadeProdutos}");
+                    Console.WriteLine($"  - Feedback dos Clientes: {fornecedor.FeedbackClientes}");
+                    Console.WriteLine();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nenhum fornecedor cadastrado.");
+            }
+
+            // Aguardar entrada do usuário para adicionar novo fornecedor ou retornar ao menu principal
+            Console.WriteLine();
+            Console.WriteLine("Opções:");
+            Console.WriteLine("1. Adicionar Novo Fornecedor");
+            Console.WriteLine("0. Retornar ao Menu Principal");
+
+            // Loop para garantir que o usuário escolha uma opção válida
+            string input;
+            do
+            {
+                input = Console.ReadLine();
+                switch (input)
+                {
+                    case "0":
+                        DisplayMenu();
+                        return;
+                    case "1":
+                        AdicionarFornecedor();
+                        return;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Yellow; // Destaca a mensagem de erro em amarelo
+                        Console.WriteLine("Opção inválida. Por favor, escolha uma opção válida.");
+                        Console.ResetColor(); // Resetar a cor para o padrão
+                        break;
+                }
+            } while (true);
+        }
+
+        // Método para adicionar um novo fornecedor
+        private static void AdicionarFornecedor()
+        {
+            Console.Clear(); // Limpar a tela
+
+            // Exibir mensagem de boas-vindas
+            Console.WriteLine("Adicionar Novo Fornecedor");
+            Console.WriteLine();
+
+            // Solicitar dados do fornecedor
+            Console.Write("Nome: ");
+            string nome = Console.ReadLine();
+            Console.Write("CPF/CNPJ: ");
+            string cpfCnpj = Console.ReadLine();
+            Console.Write("Endereço: ");
+            string endereco = Console.ReadLine();
+            Console.Write("E-mail: ");
+            string email = Console.ReadLine();
+            Console.Write("Telefone: ");
+            string telefone = Console.ReadLine();
+            Console.Write("Data de Entrega: ");
+            string dataEntrega = Console.ReadLine();
+            Console.Write("Qualidade dos Produtos: ");
+            string qualidadeProdutos = Console.ReadLine();
+            Console.Write("Feedback dos Clientes: ");
+            string feedbackClientes = Console.ReadLine();
+
+            // Adicionar o novo fornecedor à lista de fornecedores
+            Fornecedor fornecedor = new Fornecedor(nome, cpfCnpj, endereco, email, telefone)
+            {
+                DataEntrega = dataEntrega,
+                QualidadeProdutos = qualidadeProdutos,
+                FeedbackClientes = feedbackClientes
+            };
+            Fornecedores.Add(fornecedor);
+
+            // Exibir mensagem de confirmação
+            Console.ForegroundColor = ConsoleColor.Green; // Destaca a mensagem de confirmação em verde
+            Console.WriteLine("Novo fornecedor adicionado com sucesso!");
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
+
+            // Aguardar entrada do usuário para retornar à tela de fornecedores
+            Console.WriteLine("Pressione qualquer tecla para retornar à página de Fornecedores...");
+            Console.ReadKey();
+            DisplayFornecedores();
         }
 
         // Método para exibir a ajuda
@@ -190,10 +284,23 @@ namespace LoginFormConsole
 
             // Exibir mensagem de boas-vindas
             Console.WriteLine("Seja bem-vindo à página de Ajuda do Sanja Farm!");
-            // Resto da implementação da página de ajuda
+            Console.WriteLine();
 
-            // Aguardar retorno ao menu principal
-            Console.ReadLine();
+            // Exibir informações de ajuda
+            Console.WriteLine("Central de Ajuda:");
+            Console.WriteLine("- Sobre fornecedores");
+            Console.WriteLine("- Problemas com produtos");
+            Console.WriteLine("- Sobre produtos (valores e informações)");
+            Console.WriteLine("- Termos de serviço, políticas de privacidade e termos de uso");
+            Console.WriteLine("- Entre em contato");
+            Console.WriteLine("- Nossa equipe disponível de segunda a sexta das 7h às 18h, exceto feriados.");
+            Console.WriteLine("- Email de contato: sanjadevs@gmail.com");
+            Console.WriteLine("- Número de contato: (12) 4002-8922");
+            Console.WriteLine();
+
+            // Aguardar entrada do usuário para retornar ao menu principal
+            Console.WriteLine("Pressione qualquer tecla para retornar ao Menu Principal...");
+            Console.ReadKey();
             DisplayMenu();
         }
 
@@ -206,9 +313,35 @@ namespace LoginFormConsole
             Console.WriteLine("Seja bem-vindo à página de Perfil do Sanja Farm!");
             // Resto da implementação da página de perfil
 
-            // Aguardar retorno ao menu principal
-            Console.ReadLine();
+            // Aguardar entrada do usuário para retornar ao menu principal
+            Console.WriteLine("Pressione qualquer tecla para retornar ao Menu Principal...");
+            Console.ReadKey();
             DisplayMenu();
         }
+
+        // Classe para representar um fornecedor
+        class Fornecedor
+        {
+            public string Nome { get; }
+            public string CpfCnpj { get; }
+            public string Endereco { get; }
+            public string Email { get; }
+            public string Telefone { get; }
+            public string DataEntrega { get; set; }
+            public string QualidadeProdutos { get; set; }
+            public string FeedbackClientes { get; set; }
+
+            public Fornecedor(string nome, string cpfCnpj, string endereco, string email, string telefone)
+            {
+                Nome = nome;
+                CpfCnpj = cpfCnpj;
+                Endereco = endereco;
+                Email = email;
+                Telefone = telefone;
+            }
+        }
+
+        // Lista de fornecedores
+        static List<Fornecedor> Fornecedores = new List<Fornecedor>();
     }
 }
