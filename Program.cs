@@ -21,20 +21,56 @@ namespace LoginFormConsole
                 Console.WriteLine("█  ▄   ██    ▄▄▄█       █  █       █   █  ▄    █ █▄█   █  █▄█  █");
                 Console.WriteLine("█ █▄█   █   █▄▄▄█ ██▄██ █   █     ██   █ █ █   █       █       █");
                 Console.WriteLine("█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄█   █▄█    █▄▄▄█ █▄▄▄█▄█  █▄▄█▄▄▄▄▄▄██▄▄▄▄▄▄▄█");
+                // Logo da empresa 
+                Console.WriteLine(@"                                                                                                                                                                                                      
+                                                                                                   
+                                                                                
+                                    ........                                    
+                            ..++::::::::::::::::::..                            
+                        --::::::::::::::::::::::::::::--                        
+                      ::::::::::::::::::::::::::::::::::::                      
+                    ::::::::::::::::::::::::::::::::::::::::..                  
+                ..::::::::::::::::::::::::::::::::::::::::::::..                
+                ::::::::::::::::::::::----::::::::::::::::::::::                
+              ::::::::::::::::::::::        ::::::::::::::::::::::              
+            ::::::::::::::::::::    --          ::::::::::::::::::::            
+            ::::::::::::::::..  ....              ..::::::::::::::::            
+          --::::::::::::::    ::                      ::::::::::::::::          
+          ::::::::::::::++  ..      ++    ..          mm::::::::::::::          
+          ::::::::::::::..            ..    ..        --++::::::::::::          
+        --::::::::::::::  ++          ----              ++++::::::::::--        
+        --::::::::::::::  ++          ++++              ++++++::::::::::        
+        ::::::::::::::..  ..                            ..++++mm::::::::        
+        ::::::::::::::  ..          ::    ..              ++++++++::::::        
+        ::::::::::::::  ++                                ++++++++++::::        
+        --::::::::::    ++                                  ++++++++++--        
+        ..::::::::::::++--                ..--++++++mmmm++++++++++++++..        
+          ::::::::::::::..                            ..++++++++++++++          
+          ::::::::::::::..      ::      --    ::      ..++++++++++++++          
+          ..::::::::::::..      ::      ::    ::      ..++++++++++++--          
+            ::::::::::::..      ::      ..    ::      ..++++++++++++            
+            ..::::::::::..      ::      ..    ::      ..++++++++++..            
+              ::::::::::::++++++++++mm++++++mm++mmmm++++++++++++mm              
+                ::::::::::::++++++++++++++++++++++++++++++++++++                
+                  ::::::::::::++++++++++++++++++++++++++++++++                  
+                    ::::::::::::++++++++++++++++++++++++++++                    
+                      ..::::::::::++++++++++++++++++mm++::                      
+                          --::::::::++++++++++++++++::                          
+                                --++::++++++mm::                                
+                                                                                
+                                                                                              ");
                 Console.ResetColor(); // Resetar a cor para o padrão
-
-                Console.WriteLine();
-
+                Console.WriteLine("---------------------------------------------------------------");
+                Console.WriteLine("Por favor, insira seu usario e senha abaixo!");
+                Console.WriteLine("---------------------------------------------------------------");
                 // Solicitar nome de usuário
                 Console.Write("Nome de usuário: ");
                 username = Console.ReadLine();
 
                 // Solicitar senha
                 Console.Write("Senha: ");
-                password = Console.ReadLine();
-
-                loggedIn = CheckCredentials(username, password);
-
+                password = Console.ReadLine();               
+                loggedIn = CheckCredentials(username, password);      
                 if (!loggedIn)
                 {
                     Console.ForegroundColor = ConsoleColor.Red; // Destaca a mensagem de erro em vermelho
@@ -43,6 +79,7 @@ namespace LoginFormConsole
                     Console.WriteLine("Pressione qualquer tecla para continuar...");
                     Console.ReadKey(); // Espera até que o usuário pressione uma tecla para continuar
                     Console.Clear(); // Limpar a tela antes de solicitar as credenciais novamente
+
                 }
             }
 
@@ -120,31 +157,377 @@ namespace LoginFormConsole
             Console.WriteLine("4. Ajuda");
             Console.WriteLine("5. Perfil");
             Console.WriteLine("6. Sair");
+            Console.WriteLine("---------------------------------------------------------------");
         }
 
-        // Método para exibir os produtos
+        // Método para exibir os produtos 
         private static void DisplayProducts()
         {
             Console.Clear(); // Limpar a tela
 
-            // Exibir mensagem de boas-vindas
+            // Exibir mensagem de boas-vindas em verde
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Seja bem-vindo à página de Produtos do Sanja Farm!");
+            Console.ResetColor(); // Resetar a cor para o padrão
             Console.WriteLine();
 
             // Exibir lista de produtos
-            Console.WriteLine("Produtos Disponíveis:");
-            Console.WriteLine("- Café");
-            Console.WriteLine("- Hortaliças");
-            Console.WriteLine("- Queijo");
-            Console.WriteLine("- Leite");
-            Console.WriteLine("- Vinho");
+            Console.WriteLine("Escolha um dos produtos abaixo:");
+
+            Console.WriteLine("1. Hortaliças");
+            Console.WriteLine("2. Frutas");
+            Console.WriteLine("3. Ervas Medicinais");
+            Console.WriteLine("4. Plantas Aromáticas");
+            Console.WriteLine("5. Voltar ao Menu Principal");
+
+            // Aguardar entrada do usuário
+            Console.Write("Digite o número correspondente à opção desejada: ");
+            string option = Console.ReadLine();
+
+            // Verificar a opção escolhida
+            switch (option)
+            {
+                case "1":
+                    DisplayHortalicas();
+                    break;
+                case "2":
+                    DisplayFrutas();
+                    break;
+                case "3":
+                    DisplayErvasMedicinais();
+                    break;
+                case "4":
+                    DisplayPlantasAromaticas();
+                    break;
+                case "5":
+                    DisplayMenu();
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Destaca a mensagem de erro em amarelo
+                    Console.WriteLine("Opção inválida. Por favor, escolha uma opção válida.");
+                    Console.ResetColor(); // Resetar a cor para o padrão
+                    DisplayProducts(); // Mostrar o menu de produtos novamente
+                    break;
+            }
+        }
+
+        private static void DisplayHortalicas()
+        {
+            Console.Clear(); // Limpar a tela
+
+            // Exibir mensagem de boas-vindas em verde
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Bem-vindo à seção de Hortaliças do Sanja Farm!");
+            Console.ResetColor(); // Resetar a cor para o padrão
             Console.WriteLine();
 
-            // Aguardar entrada do usuário para retornar ao menu principal
-            Console.WriteLine("Pressione qualquer tecla para retornar ao Menu Principal...");
-            Console.ReadKey();
-            DisplayMenu();
+            // Descrição geral das hortaliças
+            Console.WriteLine("Nossas hortaliças são cultivadas de forma orgânica e frescas, trazendo o melhor sabor e qualidade para sua mesa.");
+            Console.WriteLine("Oferecemos uma variedade de hortaliças frescas e saudáveis, cultivadas com cuidado e atenção.");
+            Console.WriteLine();
+
+            // Exibir opções específicas para tipos de alface
+            Console.WriteLine("Tipos de Alface:");
+            Console.WriteLine("1. Alface Lisa");
+            Console.WriteLine("2. Alface Americana");
+            Console.WriteLine("3. Alface Crespa");
+            Console.WriteLine("4. Alface Mimosa");
+            Console.WriteLine("5. Alface Romana");
+            Console.WriteLine("0. Voltar ao Menu Principal");
+
+            // Aguardar entrada do usuário para escolher uma opção
+            Console.Write("Digite o número correspondente ao tipo de alface ou 0 para voltar: ");
+            string input = Console.ReadLine();
+
+            // Direcionar para a função correspondente com base na escolha do usuário
+            switch (input)
+            {
+                case "1":
+                    DisplayAlfaceLisa();
+                    break;
+                case "2":
+                    DisplayAlfaceAmericana();
+                    break;
+                case "3":
+                    DisplayAlfaceCrespa();
+                    break;
+                case "4":
+                    DisplayAlfaceMimosa();
+                    break;
+                case "5":
+                    DisplayAlfaceRomana();
+                    break;
+                case "0":
+                    DisplayMenu();
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Destaca a mensagem de erro em amarelo
+                    Console.WriteLine("Opção inválida. Por favor, escolha uma opção válida.");
+                    Console.ResetColor(); // Resetar a cor para o padrão
+                    DisplayHortalicas(); // Redirecionar para a lista de hortaliças novamente
+                    break;
+            }
         }
+
+        // Funções para exibir informações sobre os diferentes tipos de alface
+        private static void DisplayAlfaceLisa()
+        {
+            Console.Clear(); // Limpar a tela
+
+            // Exibir mensagem de boas-vindas em verde
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Bem-vindo à seção de Alface Lisa!");
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
+
+            // Descrição da alface lisa
+            Console.WriteLine("A alface lisa é uma variedade de alface de folhas macias e lisas.");
+            Console.WriteLine("É muito utilizada em saladas e sanduíches devido à sua textura suave.");
+            Console.WriteLine();
+
+            // Opções de entrada para ver mais informações
+            Console.WriteLine("Para adicionar mais informações sobre a alface lisa, digite:");
+            Console.WriteLine("1. Informações do Produto");
+            Console.WriteLine("0. Retornar ao Menu Principal");
+
+            // Aguardar entrada do usuário e redirecionar para a página correspondente
+            string option;
+            while (true)
+            {
+                Console.Write("Digite a opção desejada: ");
+                option = Console.ReadLine();
+
+                switch (option)
+                {
+                    case "0":
+                        DisplayMenu();
+                        return;
+                    case "1":
+                        DisplayProductDetails("Alface Lisa");
+                        return;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Yellow; // Destaca a mensagem de erro em amarelo
+                        Console.WriteLine("Opção inválida. Por favor, escolha uma opção válida.");
+                        Console.ResetColor(); // Resetar a cor para o padrão
+                        break;
+                }
+            }
+        }
+
+        private static void DisplayProductDetails(string productName)
+        {
+            Console.Clear(); // Limpar a tela
+
+            // Exibir mensagem de boas-vindas em verde
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Detalhes do Produto: {productName}");
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
+
+            // Solicitar informações do produto
+            Console.WriteLine($"Digite as informações do produto {productName}:");
+            Console.Write("ID: ");
+            string id = Console.ReadLine();
+            Console.Write("Fornecedor: ");
+            string fornecedor = Console.ReadLine();
+            Console.Write("Data de Coleheita: ");
+            string dataColeheita = Console.ReadLine();
+            Console.Write("Estoque: ");
+            string estoque = Console.ReadLine();
+            Console.Write("Vendido: ");
+            string vendido = Console.ReadLine();
+            Console.Write("Para Venda: ");
+            string paraVenda = Console.ReadLine();
+            Console.Write("Venda do Mês: ");
+            string vendaMes = Console.ReadLine();
+            Console.Write("Vendas Semana: ");
+            string vendasSemana = Console.ReadLine();
+            Console.WriteLine();
+
+            // Opções de navegação
+            Console.WriteLine("Opções:");
+            Console.WriteLine("1. Voltar à tela anterior");
+            Console.WriteLine("0. Retornar à tela inicial");
+
+            // Loop para garantir que o usuário escolha uma opção válida
+            string option;
+            do
+            {
+                Console.Write("Digite a opção desejada: ");
+                option = Console.ReadLine();
+
+                switch (option)
+                {
+                    case "1":
+                        // Voltar à tela anterior
+                        DisplayProducts();
+                        return;
+                    case "0":
+                        // Retornar à tela inicial
+                        DisplayMenu();
+                        return;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Yellow; // Destaca a mensagem de erro em amarelo
+                        Console.WriteLine("Opção inválida. Por favor, escolha uma opção válida.");
+                        Console.ResetColor(); // Resetar a cor para o padrão
+                        break;
+                }
+            } while (true);
+        }
+
+
+        // Implementar funções semelhantes para os outros tipos de alface: Americana, Crespa, Mimosa, Romana
+        private static void DisplayAlfaceAmericana()
+        {
+            Console.Clear(); // Limpar a tela
+
+            // Exibir mensagem de boas-vindas em verde
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Alface Americana");
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
+
+            // Descrição da alface Americana
+            Console.WriteLine("A alface Americana é conhecida por suas folhas crocantes e sabor suave.");
+            Console.WriteLine("É uma ótima opção para saladas e sanduíches, adicionando textura e frescor.");
+            Console.WriteLine();
+
+            // Aguardar entrada do usuário para retornar à lista de hortaliças
+            Console.WriteLine("Pressione qualquer tecla para voltar à lista de Hortaliças...");
+            Console.ReadKey();
+            DisplayHortalicas();
+        }
+        private static void DisplayAlfaceCrespa()
+        {
+            Console.Clear(); // Limpar a tela
+
+            // Exibir mensagem de boas-vindas em verde
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Alface Crespa");
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
+
+            // Descrição da alface crespa
+            Console.WriteLine("A alface Crespa é conhecida por suas folhas frisadas e textura crocante.");
+            Console.WriteLine("É uma escolha popular para saladas devido ao seu sabor suave e refrescante.");
+            Console.WriteLine();
+
+            // Aguardar entrada do usuário para retornar à lista de hortaliças
+            Console.WriteLine("Pressione qualquer tecla para voltar à lista de Hortaliças...");
+            Console.ReadKey();
+            DisplayHortalicas();
+        }
+        // Funções semelhantes para os outros tipos de alface: Mimosa, Romana
+        private static void DisplayAlfaceMimosa()
+        {
+            Console.Clear(); // Limpar a tela
+
+            // Exibir mensagem de boas-vindas em verde
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Alface Mimosa");
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
+
+            // Descrição da alface Americana
+            Console.WriteLine("A alface Mimosa, também conhecida como alface Butterhead, tem folhas macias e suaves.");
+            Console.WriteLine("É uma excelente opção para saladas e sanduíches devido à sua textura delicada e sabor suave.");
+            Console.WriteLine();
+
+            // Aguardar entrada do usuário para retornar à lista de hortaliças
+            Console.WriteLine("Pressione qualquer tecla para voltar à lista de Hortaliças...");
+            Console.ReadKey();
+            DisplayHortalicas();
+        }
+        private static void DisplayAlfaceRomana()
+        {
+            Console.Clear(); // Limpar a tela
+
+            // Exibir mensagem de boas-vindas em verde
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Alface Romana");
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
+
+            // Descrição da alface Americana
+            Console.WriteLine("A alface Romana, também conhecida como alface Romaine, tem folhas longas e crocantes.");
+            Console.WriteLine("É amplamente utilizada em saladas César e outras receitas devido à sua textura firme e sabor robusto.");
+            Console.WriteLine();
+
+            // Aguardar entrada do usuário para retornar à lista de hortaliças
+            Console.WriteLine("Pressione qualquer tecla para voltar à lista de Hortaliças...");
+            Console.ReadKey();
+            DisplayHortalicas();
+        }
+        private static void DisplayFrutas()
+        {
+            Console.Clear(); // Limpar a tela
+
+            // Exibir mensagem de boas-vindas em verde
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Bem-vindo à seção de Frutas do Sanja Farm!");
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
+
+            // Descrição das frutas
+            Console.WriteLine("Nossas frutas são frescas, saborosas e provenientes de produtores locais.");
+            Console.WriteLine("Oferecemos uma ampla variedade de frutas da estação, incluindo maçãs, bananas, laranjas e muito mais.");
+            Console.WriteLine();
+
+
+            // Aguardar entrada do usuário para retornar ao menu de produtos
+            Console.WriteLine("Pressione qualquer tecla para voltar à página de Produtos...");
+            Console.ReadKey();
+            DisplayProducts();
+        }
+        private static void DisplayErvasMedicinais()
+        {
+            Console.Clear(); // Limpar a tela
+
+            // Exibir mensagem de boas-vindas em verde
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Bem-vindo à seção de Ervas Medicinais do Sanja Farm!");
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
+
+            // Conteúdo específico de 
+            Console.WriteLine("Nossas ervas medicinais são cultivadas organicamente e são selecionadas cuidadosamente para garantir sua qualidade.");
+            Console.WriteLine("Oferecemos uma variedade de ervas para diferentes usos, incluindo chá de camomila, hortelã-pimenta, e muito mais.");
+            Console.WriteLine("");
+
+            Console.WriteLine("Produto Principal");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("                                                                                \r\n                                        mm                                      \r\n                                        mm                                      \r\n                                        mmmm                                    \r\n                                        mmmmmm                                  \r\n                                        MMMMmmmm                    --          \r\n                                        mmmmmmmm                    mm          \r\n                                        MMMMMMMMMM                  MM          \r\n                                        mmMMMMmmmm                MMmm          \r\n                                        MMMMmmmmmmmm            mmMMMM          \r\n                                        mmMMMMmmmm++            mm::MM--        \r\n      ++mm                              MM++MMMMMM++MM          MMMM++MM        \r\n        MMMMmmmm                          mmmmMMMM++::          mm@@MM++        \r\n          mmMM@@MMmm++MM                  ..mmMMMM::mmmm      --mmMMMMMM        \r\n            MMmmmmmmmmMMMMmm              mmmm++::mm++--        MM@@MMmm        \r\n              ++MMMMMMmmMMMMmm              MMmmMMmm::++mm    MMmmmmMM@@        \r\n              mmmmmmmm--MMMMmmMMMM          ++mmmm::----++    MMmm--MMmm        \r\n                  mmmmmm++MMMMMMMM            MM++mmmm..--mm  ++++MMmmMM        \r\n                    mm::MMMM++++mmMMMM          mmMMmmmm++++  ::mmMMmm        mm\r\n                    ::mmMMMMmmmmMMMMMM++MM        mmMMmmmm::  ++mmmmMMmm    mm  \r\n                        mmmmMMMMmmMMMMMMMM        mm::mmmmmm  ::::++mmMM  ++::  \r\n                          ++mm++MMMMmmMMmmMMmm      --++mmmm  ::mmmmMMmmmm++::  \r\n                            mmmmmmmmMMMMMMMMmmmm    mm++mm++--::::MM@@++..::    \r\n                                MMMMMMMMmm--MMMMmm    ++mm++  ++--MM++mmmm++    \r\n                                    mmmmMMmmmmmmmmmm  ++--mm::++mmmm++::++..    \r\n                                        mmmmmmmm..mmmm  ::--++mmmm  ++--++      \r\n                                            ::mmmmmm++mm  ++++::mm++++::::      \r\n                                                  mm++::++--mm++--mm++--        \r\n                                  ..  ++MM....        ++mmmm::++++++++          \r\n                  mmmmmmmmmmMMMMmmmmmm++mmmmmm++++++mm::  mmmmmm++::            \r\n          mm++++MMmm++MMMMMMMMmmmmMMmmmmMMmmmmmm::--++mmMMmmmm::                \r\n      ..mmmm++mmMMmm--MMMMMMMMMM++MMMMmmMMMMMM++mmmm++  ::--mm  ++              \r\n  mmmm++mmmmmmMMmmMMmmmmmmmmmmmm++MMmmmm++mm..::    ++mm++++++                  \r\n          mm::::mm::mm++mmmmmm::mm::::          --++::mmmm++::                  \r\n                      mm                    ++++++mm++++++mm::          ..      \r\n                                        mm++++::++++mm  ++mm::                  \r\n                                    ..mmmmmmmmmmmmmm    mm++              --    \r\n                                ..++++++::mmmmmm++      --mm                --  \r\n                              ..::::mmmm++++++::        --                      \r\n                              ::mm++mm::mm::            ::                      \r\n                            ++++++mmmm                                          \r\n                          ++mm++++                                              \r\n                        ++                                                      ");
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
+
+            // Aguardar entrada do usuário para retornar ao menu de produtos
+            Console.WriteLine("Pressione qualquer tecla para voltar à página de Produtos...");
+            Console.ReadKey();
+            DisplayProducts();
+        }
+        private static void DisplayPlantasAromaticas()
+        {
+            Console.Clear(); // Limpar a tela
+
+            // Exibir mensagem de boas-vindas em verde
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Bem-vindo à seção de Plantas Aromáticas do Sanja Farm!");
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
+
+            // Conteúdo específico de Hortaliças
+            Console.WriteLine("Nossas plantas aromáticas são cultivadas com cuidado para preservar seus aromas e sabores naturais.");
+            Console.WriteLine("Oferecemos uma variedade de plantas aromáticas, como manjericão, alecrim, salsa e muito mais, perfeitas para temperar suas refeições.");
+            Console.WriteLine();
+
+            // Aguardar entrada do usuário para retornar ao menu de produtos
+            Console.WriteLine("Pressione qualquer tecla para voltar à página de Produtos...");
+            Console.ReadKey();
+            DisplayProducts();
+        }
+
+        // Implemente métodos semelhantes para as outras opções de produtos (Frutas, Ervas Medicinais, Plantas Aromáticas)
+
 
         // Método para exibir os clientes
         private static void DisplayClientes()
@@ -152,8 +535,11 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Seja bem-vindo à página de Clientes do Sanja Farm!");
+            Console.ResetColor(); // Resetar a cor para o padrão
             Console.WriteLine();
+
 
             // Exibir informações dos clientes
             Console.WriteLine("Informações dos Clientes:");
@@ -175,25 +561,32 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Seja bem-vindo à página de Fornecedores do Sanja Farm!");
-            Console.WriteLine();
-
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();       
             // Exibir informações dos fornecedores
             if (Fornecedores.Count > 0)
-            {
-                Console.WriteLine("Fornecedores Cadastrados:");
+            {           
                 foreach (var fornecedor in Fornecedores)
                 {
-                    Console.WriteLine($"- Nome: {fornecedor.Nome}");
-                    Console.WriteLine($"  CPF/CNPJ: {fornecedor.CpfCnpj}");
-                    Console.WriteLine($"  Endereço: {fornecedor.Endereco}");
-                    Console.WriteLine($"  E-mail: {fornecedor.Email}");
-                    Console.WriteLine($"  Telefone: {fornecedor.Telefone}");
-                    Console.WriteLine("  Dados de Monitoramento:");
-                    Console.WriteLine($"  - Data de Entrega: {fornecedor.DataEntrega}");
-                    Console.WriteLine($"  - Qualidade dos Produtos: {fornecedor.QualidadeProdutos}");
-                    Console.WriteLine($"  - Feedback dos Clientes: {fornecedor.FeedbackClientes}");
-                    Console.WriteLine();
+                    Console.WriteLine("");
+                    Console.WriteLine("---------------------------------------------------------------");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Fornecedores Cadastrados:");
+                    Console.ResetColor(); // Resetar a cor para o padrão
+                    Console.WriteLine($"-  Nome: {fornecedor.Nome}");
+                    Console.WriteLine($"-  CPF/CNPJ: {fornecedor.CpfCnpj}");
+                    Console.WriteLine($"-  Endereço: {fornecedor.Endereco}");
+                    Console.WriteLine($"-  E-mail: {fornecedor.Email}");
+                    Console.WriteLine($"-  Telefone: {fornecedor.Telefone}");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Dados de Monitoramento:");
+                    Console.ResetColor(); // Resetar a cor para o padrão
+                    Console.WriteLine($"-  Produtos: {fornecedor.Produtos}");
+                    Console.WriteLine($"-  Licenças: {fornecedor.Licença}");
+                    Console.WriteLine($"-  Classificação: {fornecedor.Classificação}");
+                    Console.WriteLine("---------------------------------------------------------------");
                 }
             }
             else
@@ -206,7 +599,7 @@ namespace LoginFormConsole
             Console.WriteLine("Opções:");
             Console.WriteLine("1. Adicionar Novo Fornecedor");
             Console.WriteLine("0. Retornar ao Menu Principal");
-
+            Console.Write("Digite a opção desejada: ");
             // Loop para garantir que o usuário escolha uma opção válida
             string input;
             do
@@ -235,7 +628,9 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Adicionar Novo Fornecedor");
+            Console.ResetColor(); // Resetar a cor para o padrão
             Console.WriteLine();
 
             // Solicitar dados do fornecedor
@@ -248,20 +643,20 @@ namespace LoginFormConsole
             Console.Write("E-mail: ");
             string email = Console.ReadLine();
             Console.Write("Telefone: ");
-            string telefone = Console.ReadLine();
-            Console.Write("Data de Entrega: ");
-            string dataEntrega = Console.ReadLine();
-            Console.Write("Qualidade dos Produtos: ");
-            string qualidadeProdutos = Console.ReadLine();
-            Console.Write("Feedback dos Clientes: ");
-            string feedbackClientes = Console.ReadLine();
+            string telefone = Console.ReadLine();      
+            Console.Write("Produtos: ");
+            string produtos = Console.ReadLine();
+            Console.Write("Licença: ");
+            string licenças = Console.ReadLine();
+            Console.Write("Classificação: ");
+            string classificação = Console.ReadLine();
 
             // Adicionar o novo fornecedor à lista de fornecedores
             Fornecedor fornecedor = new Fornecedor(nome, cpfCnpj, endereco, email, telefone)
             {
-                DataEntrega = dataEntrega,
-                QualidadeProdutos = qualidadeProdutos,
-                FeedbackClientes = feedbackClientes
+                Classificação = classificação,
+                Produtos = produtos,
+                Licença = licenças,
             };
             Fornecedores.Add(fornecedor);
 
@@ -283,9 +678,11 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Seja bem-vindo à página de Ajuda do Sanja Farm!");
+            Console.ResetColor(); // Resetar a cor para o padrão
             Console.WriteLine();
-
+  
             // Exibir informações de ajuda
             Console.WriteLine("Central de Ajuda:");
             Console.WriteLine("- Sobre fornecedores");
@@ -305,19 +702,39 @@ namespace LoginFormConsole
         }
 
         // Método para exibir o perfil
+        // Método para exibir o perfil
         private static void DisplayPerfil()
         {
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas
-            Console.WriteLine("Seja bem-vindo à página de Perfil do Sanja Farm!");
-            // Resto da implementação da página de perfil
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Bem-vindo! Marcos");
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
+
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Você está logado como gerente.");
+                Console.ResetColor(); // Resetar a cor para o padrão
+                Console.WriteLine();
+
+                Console.WriteLine("Privilégios de gerente:");
+                Console.WriteLine("- Adicionar fornecedor");
+                Console.WriteLine("- Adicionar produtos");
+                Console.WriteLine("- Alterar informações");
+                Console.WriteLine("- Implementar novas funções");
+                Console.WriteLine("- Excluir conta ");
+            }
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
 
             // Aguardar entrada do usuário para retornar ao menu principal
             Console.WriteLine("Pressione qualquer tecla para retornar ao Menu Principal...");
             Console.ReadKey();
             DisplayMenu();
         }
+
 
         // Classe para representar um fornecedor
         class Fornecedor
@@ -327,9 +744,9 @@ namespace LoginFormConsole
             public string Endereco { get; }
             public string Email { get; }
             public string Telefone { get; }
-            public string DataEntrega { get; set; }
-            public string QualidadeProdutos { get; set; }
-            public string FeedbackClientes { get; set; }
+            public string Classificação { get; set; }
+            public string Produtos { get; set; }
+            public string Licença { get; set; }
 
             public Fornecedor(string nome, string cpfCnpj, string endereco, string email, string telefone)
             {
@@ -343,5 +760,6 @@ namespace LoginFormConsole
 
         // Lista de fornecedores
         static List<Fornecedor> Fornecedores = new List<Fornecedor>();
+        
     }
 }
