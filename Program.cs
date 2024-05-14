@@ -23,9 +23,7 @@ namespace LoginFormConsole
                 Console.WriteLine("█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄█   █▄█    █▄▄▄█ █▄▄▄█▄█  █▄▄█▄▄▄▄▄▄██▄▄▄▄▄▄▄█");
                 // Logo da empresa 
                 Console.WriteLine(@"                                                                                                                                                                                                      
-                                                                                                   
-                                                                                
-                                    ........                                    
+                                     ........                                    
                             ..++::::::::::::::::::..                            
                         --::::::::::::::::::::::::::::--                        
                       ::::::::::::::::::::::::::::::::::::                      
@@ -56,13 +54,11 @@ namespace LoginFormConsole
                     ::::::::::::++++++++++++++++++++++++++++                    
                       ..::::::::::++++++++++++++++++mm++::                      
                           --::::::::++++++++++++++++::                          
-                                --++::++++++mm::                                
-                                                                                
-                                                                                              ");
+                                --++::++++++mm::                                ");
                 Console.ResetColor(); // Resetar a cor para o padrão
-                Console.WriteLine("---------------------------------------------------------------");
+                Console.WriteLine("--------------------------------------------");
                 Console.WriteLine("Por favor, insira seu usario e senha abaixo!");
-                Console.WriteLine("---------------------------------------------------------------");
+                Console.WriteLine("--------------------------------------------");
                 // Solicitar nome de usuário
                 Console.Write("Nome de usuário: ");
                 username = Console.ReadLine();
@@ -150,14 +146,14 @@ namespace LoginFormConsole
             Console.WriteLine();
 
             // Exibir opções de menu
-            Console.WriteLine("---------------------------------------------------------------");
+            Console.WriteLine("---------------------------------");
             Console.WriteLine("1. Produtos");
             Console.WriteLine("2. Clientes");
             Console.WriteLine("3. Fornecedores");
             Console.WriteLine("4. Ajuda");
             Console.WriteLine("5. Perfil");
             Console.WriteLine("6. Sair");
-            Console.WriteLine("---------------------------------------------------------------");
+            Console.WriteLine("---------------------------------");
         }
 
         // Método para exibir os produtos 
@@ -166,19 +162,26 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas em verde
+            Console.WriteLine("--------------------------------------------------");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Seja bem-vindo à página de Produtos do Sanja Farm!");
             Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine("--------------------------------------------------");
             Console.WriteLine();
 
             // Exibir lista de produtos
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Escolha um dos produtos abaixo:");
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
+
 
             Console.WriteLine("1. Hortaliças");
             Console.WriteLine("2. Frutas");
             Console.WriteLine("3. Ervas Medicinais");
             Console.WriteLine("4. Plantas Aromáticas");
             Console.WriteLine("5. Voltar ao Menu Principal");
+            Console.WriteLine("");
 
             // Aguardar entrada do usuário
             Console.Write("Digite o número correspondente à opção desejada: ");
@@ -216,9 +219,11 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas em verde
+            Console.WriteLine("----------------------------------------------");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Bem-vindo à seção de Hortaliças do Sanja Farm!");
             Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine("----------------------------------------------");
             Console.WriteLine();
 
             // Descrição geral das hortaliças
@@ -227,13 +232,18 @@ namespace LoginFormConsole
             Console.WriteLine();
 
             // Exibir opções específicas para tipos de alface
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Tipos de Alface:");
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
+
             Console.WriteLine("1. Alface Lisa");
             Console.WriteLine("2. Alface Americana");
             Console.WriteLine("3. Alface Crespa");
             Console.WriteLine("4. Alface Mimosa");
             Console.WriteLine("5. Alface Romana");
             Console.WriteLine("0. Voltar ao Menu Principal");
+            Console.WriteLine("");
 
             // Aguardar entrada do usuário para escolher uma opção
             Console.Write("Digite o número correspondente ao tipo de alface ou 0 para voltar: ");
@@ -270,14 +280,16 @@ namespace LoginFormConsole
         }
 
         // Funções para exibir informações sobre os diferentes tipos de alface
-        private static void DisplayAlfaceLisa()
+        private static void DisplayAlfaceLisa(string id = "", string fornecedor = "", string dataColeheita = "", string estoque = "", string vendido = "", string paraVenda = "", string vendaMes = "", string vendasSemana = "")
         {
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas em verde
+            Console.WriteLine("---------------------------------");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Bem-vindo à seção de Alface Lisa!");
             Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine("---------------------------------");
             Console.WriteLine();
 
             // Descrição da alface lisa
@@ -285,95 +297,78 @@ namespace LoginFormConsole
             Console.WriteLine("É muito utilizada em saladas e sanduíches devido à sua textura suave.");
             Console.WriteLine();
 
-            // Opções de entrada para ver mais informações
-            Console.WriteLine("Para adicionar mais informações sobre a alface lisa, digite:");
-            Console.WriteLine("1. Informações do Produto");
-            Console.WriteLine("0. Retornar ao Menu Principal");
-
-            // Aguardar entrada do usuário e redirecionar para a página correspondente
-            string option;
-            while (true)
-            {
-                Console.Write("Digite a opção desejada: ");
-                option = Console.ReadLine();
-
-                switch (option)
-                {
-                    case "0":
-                        DisplayMenu();
-                        return;
-                    case "1":
-                        DisplayProductDetails("Alface Lisa");
-                        return;
-                    default:
-                        Console.ForegroundColor = ConsoleColor.Yellow; // Destaca a mensagem de erro em amarelo
-                        Console.WriteLine("Opção inválida. Por favor, escolha uma opção válida.");
-                        Console.ResetColor(); // Resetar a cor para o padrão
-                        break;
-                }
-            }
-        }
-
-        private static void DisplayProductDetails(string productName)
-        {
-            Console.Clear(); // Limpar a tela
-
-            // Exibir mensagem de boas-vindas em verde
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Detalhes do Produto: {productName}");
+            // Mostrar informações inseridas pelo usuário
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Informações do Produto:");
             Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine($"ID: {id}");
+            Console.WriteLine($"Fornecedor: {fornecedor}");
+            Console.WriteLine($"Data de Colheita: {dataColeheita}");
+            Console.WriteLine($"Estoque: {estoque}");
+            Console.WriteLine($"Vendido: {vendido}");
+            Console.WriteLine($"Para Venda: {paraVenda}");
+            Console.WriteLine($"Venda do Mês: {vendaMes}");
+            Console.WriteLine($"Vendas Semana: {vendasSemana}");
             Console.WriteLine();
 
-            // Solicitar informações do produto
-            Console.WriteLine($"Digite as informações do produto {productName}:");
-            Console.Write("ID: ");
-            string id = Console.ReadLine();
-            Console.Write("Fornecedor: ");
-            string fornecedor = Console.ReadLine();
-            Console.Write("Data de Coleheita: ");
-            string dataColeheita = Console.ReadLine();
-            Console.Write("Estoque: ");
-            string estoque = Console.ReadLine();
-            Console.Write("Vendido: ");
-            string vendido = Console.ReadLine();
-            Console.Write("Para Venda: ");
-            string paraVenda = Console.ReadLine();
-            Console.Write("Venda do Mês: ");
-            string vendaMes = Console.ReadLine();
-            Console.Write("Vendas Semana: ");
-            string vendasSemana = Console.ReadLine();
-            Console.WriteLine();
-
-            // Opções de navegação
+            // Opções de entrada para ver mais informações
             Console.WriteLine("Opções:");
-            Console.WriteLine("1. Voltar à tela anterior");
-            Console.WriteLine("0. Retornar à tela inicial");
+            Console.WriteLine("1. Adicionar Informações do Produto");
+            Console.WriteLine("0. Retornar ao Menu Principal");
+            Console.Write("Digite a opção desejada: ");
 
             // Loop para garantir que o usuário escolha uma opção válida
             string option;
             do
             {
-                Console.Write("Digite a opção desejada: ");
                 option = Console.ReadLine();
-
                 switch (option)
                 {
-                    case "1":
-                        // Voltar à tela anterior
-                        DisplayProducts();
-                        return;
                     case "0":
-                        // Retornar à tela inicial
                         DisplayMenu();
                         return;
+                    case "1":
+                        // Abrir outra tela para adicionar informações adicionais do produto
+                        AdicionarProduto(ref id, ref fornecedor, ref dataColeheita, ref estoque, ref vendido, ref paraVenda, ref vendaMes, ref vendasSemana);
+                        // Voltar à tela de Alface Lisa com as informações adicionadas
+                        break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Yellow; // Destaca a mensagem de erro em amarelo
                         Console.WriteLine("Opção inválida. Por favor, escolha uma opção válida.");
                         Console.ResetColor(); // Resetar a cor para o padrão
+                        Console.Write("Digite a opção desejada: ");
                         break;
                 }
             } while (true);
         }
+
+        private static void AdicionarProduto(ref string id, ref string fornecedor, ref string dataColeheita, ref string estoque, ref string vendido, ref string paraVenda, ref string vendaMes, ref string vendasSemana)
+        {
+            Console.Clear(); // Limpar a tela
+
+            Console.WriteLine("Adicionar Informações do Produto:");
+            Console.Write("ID: ");
+            id = Console.ReadLine();
+            Console.Write("Fornecedor: ");
+            fornecedor = Console.ReadLine();
+            Console.Write("Data de Colheita: ");
+            dataColeheita = Console.ReadLine();
+            Console.Write("Estoque: ");
+            estoque = Console.ReadLine();
+            Console.Write("Vendido: ");
+            vendido = Console.ReadLine();
+            Console.Write("Para Venda: ");
+            paraVenda = Console.ReadLine();
+            Console.Write("Venda do Mês: ");
+            vendaMes = Console.ReadLine();
+            Console.Write("Vendas Semana: ");
+            vendasSemana = Console.ReadLine();
+
+            // Mostrar informações inseridas pelo usuário na tela de Alface Lisa
+            DisplayAlfaceLisa(id, fornecedor, dataColeheita, estoque, vendido, paraVenda, vendaMes, vendasSemana);
+        }
+
+
 
 
         // Implementar funções semelhantes para os outros tipos de alface: Americana, Crespa, Mimosa, Romana
@@ -382,9 +377,11 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas em verde
+            Console.WriteLine("-------------------------------------");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Alface Americana");
+            Console.WriteLine("Bem-vindo à seção de Alface Americana");
             Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine("-------------------------------------");
             Console.WriteLine();
 
             // Descrição da alface Americana
@@ -402,9 +399,11 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas em verde
+            Console.WriteLine("----------------------------------");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Alface Crespa");
+            Console.WriteLine("Bem-vindo à seção de Alface Crespa");
             Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine("----------------------------------");
             Console.WriteLine();
 
             // Descrição da alface crespa
@@ -423,9 +422,11 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas em verde
+            Console.WriteLine("----------------------------------");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Alface Mimosa");
+            Console.WriteLine("Bem-vindo à seção de Alface Mimosa");
             Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine("----------------------------------");
             Console.WriteLine();
 
             // Descrição da alface Americana
@@ -443,9 +444,11 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas em verde
+            Console.WriteLine("----------------------------------");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Alface Romana");
+            Console.WriteLine("Bem-vindo à seção de Alface Romana");
             Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine("----------------------------------");
             Console.WriteLine();
 
             // Descrição da alface Americana
@@ -463,9 +466,11 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas em verde
+            Console.WriteLine("------------------------------------------");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Bem-vindo à seção de Frutas do Sanja Farm!");
             Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine("------------------------------------------");
             Console.WriteLine();
 
             // Descrição das frutas
@@ -484,10 +489,13 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas em verde
+            Console.WriteLine("----------------------------------------------------");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Bem-vindo à seção de Ervas Medicinais do Sanja Farm!");
             Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine("----------------------------------------------------");
             Console.WriteLine();
+
 
             // Conteúdo específico de 
             Console.WriteLine("Nossas ervas medicinais são cultivadas organicamente e são selecionadas cuidadosamente para garantir sua qualidade.");
@@ -510,9 +518,12 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas em verde
+            Console.WriteLine("------------------------------------------------------");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Bem-vindo à seção de Plantas Aromáticas do Sanja Farm!");
             Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine("------------------------------------------------------");
+
             Console.WriteLine();
 
             // Conteúdo específico de Hortaliças
@@ -535,14 +546,19 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas
+            Console.WriteLine("--------------------------------------------------");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Seja bem-vindo à página de Clientes do Sanja Farm!");
             Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine("--------------------------------------------------");
             Console.WriteLine();
 
 
             // Exibir informações dos clientes
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Informações dos Clientes:");
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
             Console.WriteLine("- Jacinto Amorindo | ID: 41243532-2 | CPF: 236.512.523-41");
             Console.WriteLine("- Pedro Guedes Moras | ID: 51232313-5 | CPF: 924.152.412-42");
             Console.WriteLine("- Anthony Coelho | ID: 124633122-2 | CPF: 232.111.523-53");
@@ -561,9 +577,11 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas
+            Console.WriteLine("------------------------------------------------------");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Seja bem-vindo à página de Fornecedores do Sanja Farm!");
             Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine("------------------------------------------------------");
             Console.WriteLine();       
             // Exibir informações dos fornecedores
             if (Fornecedores.Count > 0)
@@ -571,7 +589,7 @@ namespace LoginFormConsole
                 foreach (var fornecedor in Fornecedores)
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("---------------------------------------------------------------");
+                    Console.WriteLine("---------------------------------------------");
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("Fornecedores Cadastrados:");
                     Console.ResetColor(); // Resetar a cor para o padrão
@@ -586,7 +604,7 @@ namespace LoginFormConsole
                     Console.WriteLine($"-  Produtos: {fornecedor.Produtos}");
                     Console.WriteLine($"-  Licenças: {fornecedor.Licença}");
                     Console.WriteLine($"-  Classificação: {fornecedor.Classificação}");
-                    Console.WriteLine("---------------------------------------------------------------");
+                    Console.WriteLine("---------------------------------------------");
                 }
             }
             else
@@ -678,13 +696,18 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas
+            Console.WriteLine("-----------------------------------------------");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Seja bem-vindo à página de Ajuda do Sanja Farm!");
             Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine("-----------------------------------------------");
             Console.WriteLine();
-  
+
             // Exibir informações de ajuda
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Central de Ajuda:");
+            Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine();
             Console.WriteLine("- Sobre fornecedores");
             Console.WriteLine("- Problemas com produtos");
             Console.WriteLine("- Sobre produtos (valores e informações)");
@@ -708,9 +731,11 @@ namespace LoginFormConsole
             Console.Clear(); // Limpar a tela
 
             // Exibir mensagem de boas-vindas
+            Console.WriteLine("------------------");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Bem-vindo! Marcos");
             Console.ResetColor(); // Resetar a cor para o padrão
+            Console.WriteLine("------------------");
             Console.WriteLine();
 
             {
