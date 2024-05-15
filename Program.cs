@@ -587,8 +587,7 @@ namespace LoginFormConsole
             if (Fornecedores.Count > 0)
             {           
                 foreach (var fornecedor in Fornecedores)
-                {
-                    Console.WriteLine("");
+                {                   
                     Console.WriteLine("---------------------------------------------");
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("Fornecedores Cadastrados:");
@@ -615,8 +614,10 @@ namespace LoginFormConsole
             // Aguardar entrada do usuário para adicionar novo fornecedor ou retornar ao menu principal
             Console.WriteLine();
             Console.WriteLine("Opções:");
+            Console.WriteLine();
             Console.WriteLine("1. Adicionar Novo Fornecedor");
             Console.WriteLine("0. Retornar ao Menu Principal");
+            Console.WriteLine();
             Console.Write("Digite a opção desejada: ");
             // Loop para garantir que o usuário escolha uma opção válida
             string input;
