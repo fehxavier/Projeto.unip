@@ -57,7 +57,7 @@ namespace LoginFormConsole
                                 --++::++++++mm::                                ");
                 Console.ResetColor(); // Resetar a cor para o padrão
                 Console.WriteLine("--------------------------------------------");
-                Console.WriteLine("Por favor, insira seu usario e senha abaixo!");
+                Console.WriteLine("Por favor, insira seu usuario e senha abaixo!");
                 Console.WriteLine("--------------------------------------------");
                 // Solicitar nome de usuário
                 Console.Write("Nome de usuário: ");
